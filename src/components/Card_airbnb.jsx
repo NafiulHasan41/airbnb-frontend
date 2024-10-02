@@ -1,4 +1,7 @@
+'use client'
+
 import Card_carousal from "./Card_carousal";
+import { FaStar } from "react-icons/fa";
 
 
 const Card_airbnb = () => {
@@ -9,10 +12,37 @@ const Card_airbnb = () => {
         "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
       ];
     return (
-        <div className=" mt-20 bg-green-300 w-[300px] mx-auto">
+        <div className=" mt-20 w-[300px]">
              <div className="w-[300px] h-[280px] m-auto rounded-xl">
                <Card_carousal slides={slides} />
-    </div>
+            </div>
+            {/* this is for normal cards */}
+           <div>
+           <div className=" mt-3 flex justify-between">
+                <div className=" space-y-[2px]">
+                <h1 className="text-[16px] font-semibold ">Airbnb</h1>
+                <p className=" text-gray-500 text-[14px] ">Added _  weeks ago</p>
+                <p className=" text-gray-500 text-[14px] ">Date</p>
+
+                </div>
+                <div className="flex gap-1 items-start text-[14px]">
+                    <FaStar/>
+                    <p className=" text-gray-500  ">Date</p>
+                </div>
+               
+            </div>
+            <div>
+             <h1 className="text-[16px] font-medium ">$332 night</h1>
+            </div>
+           </div>
+
+           {/* this is for sold out  */}
+           <div>
+           <h1 className="text-[16px] font-semibold ">Airbnb</h1>
+           <p className=" text-gray-500 text-[14px] ">Added _  weeks ago</p>
+           <h1 className="text-[16px] font-semibold ">Sold out</h1>
+        
+           </div>
         </div>
     );
 };
