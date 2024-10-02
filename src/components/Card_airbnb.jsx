@@ -12,7 +12,7 @@ const Card_airbnb = () => {
         "https://getwallpapers.com/wallpaper/full/5/c/0/606489.jpg",
       ];
     return (
-        <div className=" mt-20 w-[300px]">
+        <div className="  w-[300px]">
              <div className="w-[300px] h-[280px] m-auto rounded-xl">
                <Card_carousal slides={slides} />
             </div>
@@ -37,12 +37,12 @@ const Card_airbnb = () => {
            </div>
 
            {/* this is for sold out  */}
-           <div>
+           {/* <div>
            <h1 className="text-[16px] font-semibold ">Airbnb</h1>
            <p className=" text-gray-500 text-[14px] ">Added _  weeks ago</p>
            <h1 className="text-[16px] font-semibold ">Sold out</h1>
         
-           </div>
+           </div> */}
         </div>
     );
 };
