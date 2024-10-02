@@ -23,7 +23,7 @@ const Navbar = () => {
                </div>
                </div> */}
                {/* this small section */}
-               <div className=" flex border rounded-full py-[10px] px-3 shadow-xl border-gray-300   ">
+               <div className=" flex border rounded-full py-[10px] px-3 shadow-sm border-gray-300   ">
                   <div className="px-3 border-r-[2px] border-gray-300 flex items-center ">
                     <h1 className="   text-[16px] font-medium">Anywhere</h1>
                   </div>
