@@ -1,7 +1,8 @@
+
 import localFont from "next/font/local";
 import "./globals.css";
-import Head from "next/head";
 import Navbar from "@/components/Navbar";
+import ClientProvider from "@/components/ClientProvider"; // Client-side component for Redux
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,19 +17,17 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "Airbnb",
-  description: "This a clone of Airbnb",
-
+  description: "This is a clone of Airbnb",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-     
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
-        <Navbar/>
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ClientProvider> 
+          <Navbar />
+          {children}
+        </ClientProvider>
       </body>
     </html>
   );

@@ -1,29 +1,12 @@
-import Card_airbnb from "@/components/Card_airbnb";
 
+import Card_airbnb from "@/components/Card_airbnb";
+import Listings_show from "@/components/Listings_show";
 
 export default function Home() {
   return (
     <div className=" ">
       <div className=" flex flex-wrap pl-8 pt-5 gap-2">
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
-       <Card_airbnb/>
+        <Listings_show/>
       </div>
      
     </div>

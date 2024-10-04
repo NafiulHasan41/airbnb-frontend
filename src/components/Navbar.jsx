@@ -14,6 +14,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Search_menu from "./Search_menu";
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
+import useAxiosPublic from "@/lib/useAxiosPublic";
+import { useDispatch } from "react-redux";
+import { setListings, setLoading } from "@/store/listingsSlice";
 
 
 const Navbar = () => {
@@ -33,6 +36,32 @@ const Navbar = () => {
     const { categoryBar: { categories } } = categoryData;
     const params= useSearchParams()
     const category = params.get('category')
+
+
+    // getting data from database 
+
+    const axiosPublic = useAxiosPublic();
+    const dispatch = useDispatch();
+
+    const fetchListings = async () => {
+
+        dispatch(setLoading(true));
+        try {
+            const response = await axiosPublic.get('/listings');
+            // console.log( "data" ,response.data);
+            dispatch(setListings(response.data));
+        } catch (error) {
+            console.log(error);
+        }finally {
+            dispatch(setLoading(false));
+          }
+      
+    };
+
+    useEffect(() => {
+        fetchListings();
+    }, []);
+
 
     
 

@@ -31,7 +31,7 @@ const Card_carousal = ({slides}) => {
           }}
         >
           {slides.map((s,i) => {
-            return <Image key={i} alt={"slide"+i} src={s} width={300} height={280} />;
+            return <Image key={i} alt={"slide"+i} src={s?.url} width={300} height={280} />;
           })}
         </div>
   
@@ -66,13 +66,13 @@ const Card_carousal = ({slides}) => {
         </div>
         <div className=" absolute top-5 right-6 ">
             {/* for available card */}
-            {/* <button className="text-white/80 hover:scale-105 hover:text-white text-xl ">
+            <button className="text-red-500/80 hover:scale-105 hover:text-white text-xl ">
             <PiHeartFill />
-            </button> */}
-            {/* for sold card */}
-            <button className="rounded-full p-1 text-xl font-extrabold bg-white/85 hover:scale-110 hover:bg-white text-black transition-transform  duration-300">
-                 <AiOutlineUpload/>
             </button>
+            {/* for sold card */}
+            {/* <button className="rounded-full p-1 text-xl font-extrabold bg-white/85 hover:scale-110 hover:bg-white text-black transition-transform  duration-300">
+                 <AiOutlineUpload/>
+            </button> */}
         </div>
       </div>
     );
