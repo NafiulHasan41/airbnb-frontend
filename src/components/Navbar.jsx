@@ -43,6 +43,13 @@ const Navbar = () => {
       };
     //   console.log(checkIn, checkOut);
 
+
+    //this is for guest count simple 
+    // guest count state
+     const [guestCount, setGuestCount] = useState(0);
+
+    //  console.log("guestCount",guestCount);
+
     // this for the category  search
 
     const { categoryBar: { categories } } = categoryData;
@@ -99,11 +106,11 @@ const Navbar = () => {
     const axiosPublic = useAxiosPublic();
     const dispatch = useDispatch();
 
-    const fetchListings = async () => {
+    const fetchListings = async (query = null) => {
 
         dispatch(setLoading(true));
         try {
-            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}${category ? `&category=${category}` : ''}&values=${encodeURIComponent(values.join(','))}&selectedAmenities=${encodeURIComponent(selectedAmenities.join(','))}`);
+            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}${category ? `&category=${category}` : ''}&values=${encodeURIComponent(values.join(','))}&selectedAmenities=${encodeURIComponent(selectedAmenities.join(','))}${query ? `&${query}` : ''}`);
             // console.log( "data" ,response.data);
             dispatch(setListings(response.data));
         } catch (error) {
@@ -119,7 +126,12 @@ const Navbar = () => {
     }, [displayTotalBeforeTaxes , category , values , selectedAmenities]);
 
 
+    
+    const handleAllSearch = () =>{
 
+        fetchListings(`checkIn=${checkIn}&checkOut=${checkOut}&guestCount=${guestCount}&s_value=${s_value}`);
+
+    };
 
     
 
@@ -211,12 +223,13 @@ const Navbar = () => {
                                         <div className="w-60">
                                         <DatePickerWithRange onDatesChange={handleDatesChange} />
                                         </div>
-                                        <div className="flex flex-1 items-center border-l-2 ">
-                                        <div className='flex-1 pl-4'>
-                                            <div className="font-medium text-sm">Who</div>
-                                            <div className='text-muted-foreground'>Add guests</div>
-                                        </div>
-                                        <div className="mr-3 h-12 w-12 rounded-full bg-[#FF385C] flex justify-center items-center text-white">
+                                        <div className="flex justify-between flex-1 items-center border-l-2 ">
+                                         <div>
+                                         <Search_menu guestCount={guestCount} setGuestCount={setGuestCount} />
+                                         </div>
+                                        <div 
+                                        onClick={handleAllSearch}
+                                         className="mr-9  h-12 w-12 rounded-full bg-[#FF385C] flex justify-center items-center text-white">
                                             <IoSearchSharp className="text-[18px] font-bold text-white" />
                                         </div>
                                         </div>
