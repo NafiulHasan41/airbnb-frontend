@@ -24,7 +24,7 @@ const Card_airbnb = ({listing}) => {
                 <div className=" space-y-[2px]">
                 <h1 className="text-[16px] font-semibold ">{listing?.location?.city}, {listing?.location?.state},{listing?.location?.country}</h1>
                 <p className=" text-gray-500 text-[14px] ">{listing?.title}</p>
-                <p className=" text-gray-500 text-[14px] ">{listing?.bookedDates?.[0]} to {listing?.bookedDates?.[listing?.bookedDates.length-1]} </p>
+                <p className=" text-gray-500 text-[14px] ">{listing?.bookedDates?.[0]} to {listing?.bookedDates?.[listing?.bookedDates?.length-1]} </p>
 
                 </div>
                 <div className="flex gap-1 items-start text-[14px]">
@@ -34,7 +34,11 @@ const Card_airbnb = ({listing}) => {
                
             </div>
             <div>
-             <h1 className="text-[16px] font-medium ">${listing?.price?.perNight} night</h1>
+                {
+                    listing?.totalPriceBeforeTaxes ? <h1 className="text-[16px] font-medium underline ">${listing?.totalPriceBeforeTaxes} total before taxes</h1>  :
+                    <h1 className="text-[16px] font-medium ">${listing?.price?.perNight} night</h1>
+                }
+             
             </div>
            </div>
 

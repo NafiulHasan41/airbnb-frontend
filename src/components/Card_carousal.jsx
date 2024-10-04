@@ -66,7 +66,7 @@ const Card_carousal = ({slides}) => {
         </div>
         <div className=" absolute top-5 right-6 ">
             {/* for available card */}
-            <button className="text-red-500/80 hover:scale-105 hover:text-white text-xl ">
+            <button className="text-red-500/80  hover:text-red-500 hover:scale-125 text-xl ">
             <PiHeartFill />
             </button>
             {/* for sold card */}

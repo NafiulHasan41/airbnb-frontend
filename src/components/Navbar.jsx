@@ -37,6 +37,13 @@ const Navbar = () => {
     const params= useSearchParams()
     const category = params.get('category')
 
+    // for before taxes toggle button 
+    const [displayTotalBeforeTaxes, setDisplayTotalBeforeTaxes] = useState(false);
+    // Function to handle switch toggle
+    const handleSwitchToggle = () => {
+        setDisplayTotalBeforeTaxes(!displayTotalBeforeTaxes);
+    };
+
 
     // getting data from database 
 
@@ -47,7 +54,7 @@ const Navbar = () => {
 
         dispatch(setLoading(true));
         try {
-            const response = await axiosPublic.get('/listings');
+            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}`);
             // console.log( "data" ,response.data);
             dispatch(setListings(response.data));
         } catch (error) {
@@ -60,7 +67,7 @@ const Navbar = () => {
 
     useEffect(() => {
         fetchListings();
-    }, []);
+    }, [displayTotalBeforeTaxes]);
 
 
     
@@ -226,8 +233,8 @@ const Navbar = () => {
                            <Search_menu/>
                       </div>
                         <div className="flex items-center space-x-2 border rounded-lg p-2 ">
-                           <Label htmlFor="airplane-mode" className=" text-[12px] ">Display total before taxes</Label>
-                            <Switch id="airplane-mode" />    
+                            <Label htmlFor="airplane-mode" className=" text-[12px] ">Display total before taxes</Label>
+                            <Switch id="airplane-mode" checked={displayTotalBeforeTaxes} onCheckedChange={handleSwitchToggle} />
                         </div>
 
                 </div>
