@@ -10,7 +10,7 @@ import categoryData from "@/lib/categories";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import {  useSearchParams } from 'next/navigation';
 import Search_menu from "./Search_menu";
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
@@ -18,7 +18,6 @@ import useAxiosPublic from "@/lib/useAxiosPublic";
 import { useDispatch } from "react-redux";
 import { setListings, setLoading } from "@/store/listingsSlice";
 import Filter from "./Filter";
-import { ColumnSpacingIcon } from "@radix-ui/react-icons";
 import Search from "./Search";
 import { DatePickerWithRange } from "./DatePickerWithRange";
 
