@@ -20,6 +20,7 @@ import { setListings, setLoading } from "@/store/listingsSlice";
 import Filter from "./Filter";
 import { ColumnSpacingIcon } from "@radix-ui/react-icons";
 import Search from "./Search";
+import { DatePickerWithRange } from "./DatePickerWithRange";
 
 
 const Navbar = () => {
@@ -28,6 +29,19 @@ const Navbar = () => {
     const [s_value, setSValue] = React.useState("");
 
     // console.log("inside_navbar=>S-value",s_value);
+
+
+    //date change
+    const [checkIn, setCheckIn] = useState("");
+    const [checkOut, setCheckOut] = useState("");
+    const handleDatesChange = (dates) => {
+        // console.log(dates);
+        setCheckIn(dates.checkIn);
+        setCheckOut(dates.checkOut);
+     
+       
+      };
+    //   console.log(checkIn, checkOut);
 
     // this for the category  search
 
@@ -190,25 +204,22 @@ const Navbar = () => {
 
                                 <div className="mt-10">
                                     <div className="flex w-[850px] rounded-full border-[1px] border-solid pb-4 pl-8 pt-4 shadow-lg  ">
-                                    <div className='flex-1 border-solid border-r-2'>
+                                        <div className='flex-1 border-solid border-r-2'>
                                             <div className="font-medium text-sm">Where</div>
                                             <Search setSValue={setSValue} />
                                         </div>
-                        <div className='pl-4 pr-4 border-solid border-r-2'>
-                            <div className="font-medium text-sm">Check in</div>
-                            <div className='text-muted-foreground'>Add dates</div>
-                        </div>
-                        <div className='pl-4 pr-4 border-solid border-r-2'>
-                            <div className="font-medium text-sm">Check out</div>
-                            <div className='text-muted-foreground'>Add dates</div>
-                        </div>
-                        <div className='flex-1 pl-4'>
-                            <div className="font-medium text-sm">Who</div>
-                            <div className='text-muted-foreground'>Add guests</div>
-                        </div>
-                        <div className="mr-3 h-12 w-12 rounded-full bg-[#FF385C] flex justify-center items-center text-white">
-                          <IoSearchSharp className="text-[18px] font-bold text-white" />
-                        </div>
+                                        <div className="w-60">
+                                        <DatePickerWithRange onDatesChange={handleDatesChange} />
+                                        </div>
+                                        <div className="flex flex-1 items-center border-l-2 ">
+                                        <div className='flex-1 pl-4'>
+                                            <div className="font-medium text-sm">Who</div>
+                                            <div className='text-muted-foreground'>Add guests</div>
+                                        </div>
+                                        <div className="mr-3 h-12 w-12 rounded-full bg-[#FF385C] flex justify-center items-center text-white">
+                                            <IoSearchSharp className="text-[18px] font-bold text-white" />
+                                        </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
