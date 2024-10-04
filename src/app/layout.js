@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ClientProvider from "@/components/ClientProvider"; // Client-side component for Redux
+import { Suspense } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ClientProvider> 
+        <Suspense fallback={<div>Loading...</div>}>
           <Navbar />
+          </Suspense>
           {children}
         </ClientProvider>
       </body>
