@@ -17,6 +17,8 @@ import { Switch } from "@/components/ui/switch"
 import useAxiosPublic from "@/lib/useAxiosPublic";
 import { useDispatch } from "react-redux";
 import { setListings, setLoading } from "@/store/listingsSlice";
+import Filter from "./Filter";
+import { ColumnSpacingIcon } from "@radix-ui/react-icons";
 
 
 const Navbar = () => {
@@ -37,12 +39,49 @@ const Navbar = () => {
     const params= useSearchParams()
     const category = params.get('category')
 
+
+
+
     // for before taxes toggle button 
     const [displayTotalBeforeTaxes, setDisplayTotalBeforeTaxes] = useState(false);
     // Function to handle switch toggle
     const handleSwitchToggle = () => {
         setDisplayTotalBeforeTaxes(!displayTotalBeforeTaxes);
     };
+
+     // for price range filter
+    
+    const [values, setValues] = useState([0, 1000]);
+
+    const handleInputChange = (index, event) => {
+        const newValue = parseInt(event.target.value, 10);
+        const updatedValues = [...values];
+        updatedValues[index] = newValue;
+        setValues(updatedValues);
+    };
+
+
+    // for amenities filter
+    const [selectedAmenities, setSelectedAmenities] = useState([]);
+
+  // Handle when a checkbox is selected or deselected
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+
+    if (checked) {
+      // Add the selected amenity
+      setSelectedAmenities((prev) => [...prev, value]);
+    } else {
+      // Remove the deselected amenity
+      setSelectedAmenities((prev) => prev.filter((amenity) => amenity !== value));
+    }
+  };
+
+//   console.log('range', values);
+//   console.log('amenities', selectedAmenities);
+
+  
+
 
 
     // getting data from database 
@@ -54,7 +93,7 @@ const Navbar = () => {
 
         dispatch(setLoading(true));
         try {
-            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}&category=${category}`);
+            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}${category ? `&category=${category}` : ''}&values=${encodeURIComponent(values.join(','))}&selectedAmenities=${encodeURIComponent(selectedAmenities.join(','))}`);
             // console.log( "data" ,response.data);
             dispatch(setListings(response.data));
         } catch (error) {
@@ -67,7 +106,9 @@ const Navbar = () => {
 
     useEffect(() => {
         fetchListings();
-    }, [displayTotalBeforeTaxes,category ]);
+    }, [displayTotalBeforeTaxes , category , values , selectedAmenities]);
+
+
 
 
     
@@ -230,7 +271,7 @@ const Navbar = () => {
 
                 <div className=" flex gap-4 items-center" >
                       <div>
-                           <Search_menu/>
+                          <Filter values={values} setValues={setValues} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange} />
                       </div>
                         <div className="flex items-center space-x-2 border rounded-lg p-2 ">
                             <Label htmlFor="airplane-mode" className=" text-[12px] ">Display total before taxes</Label>

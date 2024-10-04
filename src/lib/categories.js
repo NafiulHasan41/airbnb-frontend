@@ -15,15 +15,11 @@ const  categoryData = {
             },
             {
                 imageUrl: "https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg",
-                title: "Treehouses",
+                title: "Tree Houses",
             },
             {
                 imageUrl: "https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg",
                 title: "Islands",
-            },
-            {
-                imageUrl: "https://a0.muscache.com/pictures/7630c83f-96a8-4232-9a10-0398661e2e6f.jpg",
-                title: "Rooms",
             },
             {
                 imageUrl: "https://a0.muscache.com/pictures/a6dd2bae-5fd0-4b28-b123-206783b5de1d.jpg",
@@ -36,10 +32,6 @@ const  categoryData = {
             {
                 imageUrl: "https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg",
                 title: "Beach",
-            },
-            {
-                imageUrl: "https://a0.muscache.com/pictures/c9157d0a-98fe-4516-af81-44022118fbc7.jpg",
-                title: "Dammusi",
             },
             {
                 imageUrl: "https://a0.muscache.com/pictures/1d477273-96d6-4819-9bda-9085f809dad3.jpg",
@@ -56,14 +48,6 @@ const  categoryData = {
             {
                 imageUrl: "https://a0.muscache.com/pictures/50861fca-582c-4bcc-89d3-857fb7ca6528.jpg",
                 title: "Design",
-            },
-            {
-                imageUrl: "https://a0.muscache.com/pictures/33848f9e-8dd6-4777-b905-ed38342bacb9.jpg",
-                title: "Trulli",
-            },
-            {
-                imageUrl: "https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg",
-                title: "Trending",
             },
             {
                 imageUrl: "https://a0.muscache.com/pictures/d7445031-62c4-46d0-91c3-4f29f9790f7a.jpg",
