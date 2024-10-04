@@ -54,7 +54,7 @@ const Navbar = () => {
 
         dispatch(setLoading(true));
         try {
-            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}`);
+            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}&category=${category}`);
             // console.log( "data" ,response.data);
             dispatch(setListings(response.data));
         } catch (error) {
@@ -67,7 +67,7 @@ const Navbar = () => {
 
     useEffect(() => {
         fetchListings();
-    }, [displayTotalBeforeTaxes]);
+    }, [displayTotalBeforeTaxes,category ]);
 
 
     

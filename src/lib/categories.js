@@ -2,6 +2,10 @@ const  categoryData = {
     categoryBar: {
         categories: [
             {
+                imageUrl: "https://cdn-icons-png.flaticon.com/512/654/654116.png",
+                title: "All Listings",
+            },
+            {
                 imageUrl: "https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg",
                 title: "Amazing pools",
             },
