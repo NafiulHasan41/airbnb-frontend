@@ -13,13 +13,23 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function DatePickerWithRange({ className, onDatesChange }) {
+export function DatePickerWithRange({ className, setCheckInN, setCheckOutN }) {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [dateRange, setDateRange] = useState(undefined);
 
+  const onDatesChange = (dates) => {
+    // console.log(dates);
+    setCheckInN(dates.checkIn);
+    setCheckOutN(dates.checkOut);
+ 
+   
+  };
+
   const handleSelect = (range) => {
     setDateRange(range);
+  
+    
 
     if (range?.from) {
       const formattedCheckIn = format(range.from, "yyyy-MM-dd");

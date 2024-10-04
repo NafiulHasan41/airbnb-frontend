@@ -31,15 +31,9 @@ const Navbar = () => {
 
 
     //date change
-    const [checkIn, setCheckIn] = useState("");
-    const [checkOut, setCheckOut] = useState("");
-    const handleDatesChange = (dates) => {
-        // console.log(dates);
-        setCheckIn(dates.checkIn);
-        setCheckOut(dates.checkOut);
-     
-       
-      };
+    const [checkIn, setCheckInN] = useState("");
+    const [checkOut, setCheckOutN] = useState("");
+  
     //   console.log(checkIn, checkOut);
 
 
@@ -170,6 +164,7 @@ const Navbar = () => {
     };
 
     return (
+        <React.Suspense fallback={<div>Loading...</div>}>
         <div className="sticky top-0 z-50 bg-white">
             <div className="flex justify-between border-b-[2px]">
                 <div className="p-5">
@@ -220,7 +215,7 @@ const Navbar = () => {
                                             <Search setSValue={setSValue} />
                                         </div>
                                         <div className="w-60">
-                                        <DatePickerWithRange onDatesChange={handleDatesChange} />
+                                        <DatePickerWithRange setCheckOutN={setCheckOutN} setCheckInN={setCheckInN} />
                                         </div>
                                         <div className="flex justify-between flex-1 items-center border-l-2 ">
                                          <div>
@@ -296,6 +291,7 @@ const Navbar = () => {
              
             </div>
         </div>
+        </React.Suspense>
     );
 };
 
