@@ -1,5 +1,5 @@
 'use client'
-
+import * as React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { TfiWorld } from "react-icons/tfi";
@@ -19,19 +19,15 @@ import { useDispatch } from "react-redux";
 import { setListings, setLoading } from "@/store/listingsSlice";
 import Filter from "./Filter";
 import { ColumnSpacingIcon } from "@radix-ui/react-icons";
+import Search from "./Search";
 
 
 const Navbar = () => {
 
-    //     for search
-    const [search, setSearch] = useState('');
-    const [searchText, setSearchText] = useState('');
+    // for search location 
+    const [s_value, setSValue] = React.useState("");
 
-    const handleSearch = e => {
-        e.preventDefault()
-
-        setSearch(searchText)
-    }
+    // console.log("inside_navbar=>S-value",s_value);
 
     // this for the category  search
 
@@ -196,14 +192,7 @@ const Navbar = () => {
                                     <div className="flex w-[850px] rounded-full border-[1px] border-solid pb-4 pl-8 pt-4 shadow-lg  ">
                                     <div className='flex-1 border-solid border-r-2'>
                                             <div className="font-medium text-sm">Where</div>
-                                            <form onSubmit={handleSearch}>
-                                                <div className=" flex justify-center  ">
-                                                    <label className="input input-bordered flex items-center w-[250px]  gap-2">
-                                                        <input onChange={e => setSearchText(e.target.value)}
-                                                            value={searchText} type="text" className="grow border-none focus:outline-none focus:ring-0 " placeholder="Search destinations" />
-                                                    </label>
-                                                </div>
-                                            </form>
+                                            <Search setSValue={setSValue} />
                                         </div>
                         <div className='pl-4 pr-4 border-solid border-r-2'>
                             <div className="font-medium text-sm">Check in</div>
