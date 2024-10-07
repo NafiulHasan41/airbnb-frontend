@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { PiHeartFill } from "react-icons/pi";
 import { AiOutlineUpload } from "react-icons/ai";
+import Book_card from "./BookCard/Book_card";
 
 const Card_carousal = ({slides}) => {
     let [current, setCurrent] = useState(0);
@@ -74,6 +75,9 @@ const Card_carousal = ({slides}) => {
                  <AiOutlineUpload/>
             </button> */}
         </div>
+         <div className=" absolute bottom-3 left-4 group-hover:scale-110 ">
+          <Book_card/>
+         </div>
       </div>
     );
   }
