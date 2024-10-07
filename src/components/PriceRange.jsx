@@ -4,26 +4,9 @@ import React, { useState, useEffect } from "react";
 import { Range } from "react-range";
 import { BarChart, Bar, Cell, ResponsiveContainer } from "recharts";
 import "./price_range.css";
-import useAxiosPublic from "@/lib/useAxiosPublic";
 
-const PriceRange = ({ values, setValues, handleInputChange }) => {
-  const [productData, setProductData] = useState([]);
-   
-  // if the values take time to come then I will transfer to the root file and pass it as props
-  //like pass the props value to the root file and then pass it to the child component
-  const axiosPublic = useAxiosPublic();
-  const fetchPriceRangeCounts = async () => {
-    try {
-      const response = await axiosPublic.get("/price-range-count");
-      setProductData(response.data);
-    } catch (error) {
-      console.error("Error fetching price range counts:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchPriceRangeCounts();
-  }, []);
+const PriceRange = ({ values, setValues, handleInputChange , productData  }) => {
+ 
 
   const STEP = 1;
   const MIN = 0;

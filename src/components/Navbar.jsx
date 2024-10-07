@@ -70,7 +70,7 @@ const Navbar = () => {
     const [bedsCount, setBedsCount] = useState(0);
     const [bathroomCount, setBathroomCount] = useState(0);
 
-    console.log(bedroomCount, bedsCount, bathroomCount);
+    // console.log(bedroomCount, bedsCount, bathroomCount);
 
 
 
@@ -80,6 +80,25 @@ const Navbar = () => {
         updatedValues[index] = newValue;
         setValues(updatedValues);
     };
+
+    // because the rendering takes time that why I am using the api call here 
+    const [productData, setProductData] = useState([]);
+   
+    // if the values take time to come then I will transfer to the root file and pass it as props
+    //like pass the props value to the root file and then pass it to the child component
+   
+    const fetchPriceRangeCounts = async () => {
+      try {
+        const response = await axiosPublic.get("/price-range-count");
+        setProductData(response.data);
+      } catch (error) {
+        console.error("Error fetching price range counts:", error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchPriceRangeCounts();
+    }, []);
 
 
     // for amenities filter
@@ -293,7 +312,7 @@ const Navbar = () => {
 
                 <div className=" flex gap-4 items-center" >
                       <div>
-                          <Filter values={values} setValues={setValues} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange} bedroomCount={bedroomCount} setBedroomCount={setBedroomCount} bedsCount={bedsCount} setBedsCount={setBedsCount} bathroomCount={bathroomCount} setBathroomCount={setBathroomCount}  />
+                          <Filter values={values} setValues={setValues} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange} bedroomCount={bedroomCount} setBedroomCount={setBedroomCount} bedsCount={bedsCount} setBedsCount={setBedsCount} bathroomCount={bathroomCount} setBathroomCount={setBathroomCount}  productData={productData} />
                       </div>
                         <div className="flex items-center space-x-2 border rounded-lg p-2 ">
                             <Label htmlFor="airplane-mode" className=" text-[12px] ">Display total before taxes</Label>

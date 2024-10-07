@@ -20,7 +20,7 @@ import Filter_by_room from "./Filter_by_room"
 
 
 
-const Filter = ({values,setValues,handleInputChange,handleCheckboxChange,bedroomCount, setBedroomCount, bedsCount, setBedsCount, bathroomCount, setBathroomCount }) => {
+const Filter = ({values,setValues,handleInputChange,handleCheckboxChange,bedroomCount, setBedroomCount, bedsCount, setBedsCount, bathroomCount, setBathroomCount ,productData }) => {
     return (
         <Dialog>
       <DialogTrigger asChild>
@@ -35,7 +35,7 @@ const Filter = ({values,setValues,handleInputChange,handleCheckboxChange,bedroom
           
         </DialogHeader>
         <div className="grid gap-4 py-4 border-t border-black">
-          <PriceRange values={values} setValues={setValues} handleInputChange={handleInputChange} />
+          <PriceRange values={values} setValues={setValues} handleInputChange={handleInputChange} productData={productData} />
           <Filter_by_room bedroomCount={bedroomCount} setBedroomCount={setBedroomCount} bedsCount={bedsCount} setBedsCount={setBedsCount} bathroomCount={bathroomCount} setBathroomCount={setBathroomCount}/>
           <AmenitiesFilter handleCheckboxChange={handleCheckboxChange}/>
         </div>
