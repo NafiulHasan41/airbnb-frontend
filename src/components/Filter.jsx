@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label"
 import { RxMixerHorizontal } from "react-icons/rx";
 import PriceRange from "./PriceRange"
 import AmenitiesFilter from "./AmenitiesFilter"
+import Filter_by_room from "./Filter_by_room"
 
 
 
@@ -28,13 +29,14 @@ const Filter = ({values,setValues,handleInputChange,handleCheckboxChange}) => {
                 <h1 className="text-[14px] font-medium">Filter</h1>
             </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className=" w-[800px] h-[800px] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className='text-center'>Filters</DialogTitle>
           
         </DialogHeader>
         <div className="grid gap-4 py-4 border-t border-black">
           <PriceRange values={values} setValues={setValues} handleInputChange={handleInputChange} />
+          <Filter_by_room/>
           <AmenitiesFilter handleCheckboxChange={handleCheckboxChange}/>
         </div>
         <DialogFooter>

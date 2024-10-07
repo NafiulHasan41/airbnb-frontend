@@ -1,0 +1,34 @@
+.custom-input {
+ 
+    -moz-appearance: textfield; 
+    -webkit-appearance: none; 
+    appearance: none; 
+  }
+  
+  
+  .custom-input::-webkit-inner-spin-button,
+  .custom-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+ 
+  .custom-input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .custom-track {
+    height: 2px;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  
+  .custom-thumb {
+    height: 28px;
+    width: 28px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  

@@ -122,6 +122,7 @@ const Navbar = () => {
     
     const handleAllSearch = () =>{
 
+        
         fetchListings(`checkIn=${checkIn}&checkOut=${checkOut}&guestCount=${guestCount}&s_value=${s_value}`);
 
     };
@@ -211,7 +212,7 @@ const Navbar = () => {
                                 <div className="mt-10">
                                     <div className="flex w-[850px] rounded-full border-[1px] border-solid pb-4 pl-8 pt-4 shadow-lg  ">
                                         <div className='flex-1 border-solid border-r-2'>
-                                            <div className="font-medium text-sm">Where</div>
+                                            <div className="font-medium text-sm pl-2 pt-1 ">Where</div>
                                             <Search setSValue={setSValue} />
                                         </div>
                                         <div className="w-60">
