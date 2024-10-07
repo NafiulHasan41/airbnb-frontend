@@ -26,8 +26,10 @@ const Navbar = () => {
 
     // for search location 
     const [s_value, setSValue] = React.useState("");
+    
+    //  console.log("inside_navbar=>S-value",s_value);
 
-    // console.log("inside_navbar=>S-value",s_value);
+    
 
 
     //date change
@@ -62,6 +64,15 @@ const Navbar = () => {
      // for price range filter
     
     const [values, setValues] = useState([0, 1000]);
+
+    //filter by rooms beds and baths 
+    const [bedroomCount, setBedroomCount] = useState(0);
+    const [bedsCount, setBedsCount] = useState(0);
+    const [bathroomCount, setBathroomCount] = useState(0);
+
+    console.log(bedroomCount, bedsCount, bathroomCount);
+
+
 
     const handleInputChange = (index, event) => {
         const newValue = parseInt(event.target.value, 10);
@@ -103,7 +114,7 @@ const Navbar = () => {
 
         dispatch(setLoading(true));
         try {
-            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}${category ? `&category=${category}` : ''}&values=${encodeURIComponent(values.join(','))}&selectedAmenities=${encodeURIComponent(selectedAmenities.join(','))}${query ? `&${query}` : ''}`);
+            const response = await axiosPublic.get(`/listings?displayTotalBeforeTaxes=${displayTotalBeforeTaxes}${category ? `&category=${category}` : ''}&values=${encodeURIComponent(values.join(','))}&selectedAmenities=${encodeURIComponent(selectedAmenities.join(','))}${query ? `&${query}` : ''}&bedroomCount=${bedroomCount}&bedsCount=${bedsCount}&bathroomCount=${bathroomCount}`);
             // console.log( "data" ,response.data);
             dispatch(setListings(response.data));
         } catch (error) {
@@ -116,7 +127,7 @@ const Navbar = () => {
 
     useEffect(() => {
         fetchListings();
-    }, [displayTotalBeforeTaxes , category , values , selectedAmenities]);
+    }, [displayTotalBeforeTaxes , category , values , selectedAmenities, bedroomCount, bedsCount, bathroomCount]);
 
 
     
@@ -163,6 +174,9 @@ const Navbar = () => {
             setDisableScroll(false);
         }, 1000);
     };
+
+ 
+  
 
     return (
         <React.Suspense fallback={<div>Loading...</div>}>
@@ -279,7 +293,7 @@ const Navbar = () => {
 
                 <div className=" flex gap-4 items-center" >
                       <div>
-                          <Filter values={values} setValues={setValues} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange} />
+                          <Filter values={values} setValues={setValues} handleInputChange={handleInputChange} handleCheckboxChange={handleCheckboxChange} bedroomCount={bedroomCount} setBedroomCount={setBedroomCount} bedsCount={bedsCount} setBedsCount={setBedsCount} bathroomCount={bathroomCount} setBathroomCount={setBathroomCount}  />
                       </div>
                         <div className="flex items-center space-x-2 border rounded-lg p-2 ">
                             <Label htmlFor="airplane-mode" className=" text-[12px] ">Display total before taxes</Label>

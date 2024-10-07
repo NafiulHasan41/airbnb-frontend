@@ -15,13 +15,13 @@ const Search = ({ setSValue }) => {
   const fetchSuggestions = async (query) => {
     try {
       const response = await axiosPublic.get(`/locations?search=${query}`);
-      setSuggestions(response.data); // Assuming API returns an array of location objects
+      setSuggestions(response.data); 
     } catch (error) {
       console.error('Error fetching suggestions:', error);
     }
   };
 
-  // Fetch suggestions with debouncing
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchQuery) {
@@ -29,7 +29,7 @@ const Search = ({ setSValue }) => {
       } else {
         setSuggestions([]);
       }
-    }, 300); // Delay for debouncing
+    }, 300); 
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery]);
@@ -39,12 +39,12 @@ const Search = ({ setSValue }) => {
     setValue(newValue);
   };
 
-  // Autosuggest calls this to fetch suggestions
+
   const onSuggestionsFetchRequested = ({ value }) => {
-    setSearchQuery(value); // Trigger the search query
+    setSearchQuery(value);
   };
 
-  // Clear suggestions when user input is cleared
+ 
   const onSuggestionsClearRequested = () => {
     setSuggestions([]);
   };
@@ -52,18 +52,18 @@ const Search = ({ setSValue }) => {
   // When suggestion is clicked, Autosuggest needs to populate the input
   const getSuggestionValue = (suggestion) => suggestion.label;
 
-  // Render suggestions
   const renderSuggestion = (suggestion) => (
     <div className="suggestion-item">
       {suggestion.label}
     </div>
   );
 
-  // Update SValue whenever value changes
+  
   useEffect(() => {
-    const selectedLocation = suggestions.find((location) => location.id === value)?.label;
-    setSValue(selectedLocation);
-  }, [value, suggestions]);
+    
+    // console.log('inside use value->', value);
+    setSValue(value);
+  }, [value]);
 
   const inputProps = {
     placeholder: 'Search destinations',

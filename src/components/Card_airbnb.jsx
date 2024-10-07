@@ -16,7 +16,7 @@ const Card_airbnb = ({listing}) => {
     return (
         <div className="  w-[300px]">
              <div className="w-[300px] h-[280px] m-auto rounded-xl">
-               <Card_carousal slides={listing?.images || slides} />
+               <Card_carousal slides={listing?.images || slides} host={listing?.host} />
             </div>
             {/* this is for normal cards */}
            <div>

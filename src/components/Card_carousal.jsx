@@ -10,7 +10,7 @@ import { PiHeartFill } from "react-icons/pi";
 import { AiOutlineUpload } from "react-icons/ai";
 import Book_card from "./BookCard/Book_card";
 
-const Card_carousal = ({slides}) => {
+const Card_carousal = ({slides, host}) => {
     let [current, setCurrent] = useState(0);
 
     let previousSlide = () => {
@@ -76,7 +76,7 @@ const Card_carousal = ({slides}) => {
             </button> */}
         </div>
          <div className=" absolute bottom-3 left-4 group-hover:scale-110 ">
-          <Book_card/>
+          <Book_card host={host} />
          </div>
       </div>
     );

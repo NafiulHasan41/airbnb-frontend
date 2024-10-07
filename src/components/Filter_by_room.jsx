@@ -2,11 +2,11 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Filter_by_room = () => {
-    // {bedroomCount, setBathroomCount, bedsCount, setBedsCount, bathroomCount, setBathroomCount}
-    const [bedroomCount, setBedroomCount] = useState(0);
-    const [bedsCount, setBedsCount] = useState(0);
-    const [bathroomCount, setBathroomCount] = useState(0);
+const Filter_by_room = ({bedroomCount, setBedroomCount, bedsCount, setBedsCount, bathroomCount, setBathroomCount}) => {
+    // {bedroomCount, setBedroomCount, bedsCount, setBedsCount, bathroomCount, setBathroomCount}
+    // const [bedroomCount, setBedroomCount] = useState(0);
+    // const [bedsCount, setBedsCount] = useState(0);
+    // const [bathroomCount, setBathroomCount] = useState(0);
     const incrementBedroom = () => setBedroomCount(bedroomCount + 1);
     const decrementBedroom = () => setBedroomCount(bedroomCount > 0 ? bedroomCount - 1 : 0);
     

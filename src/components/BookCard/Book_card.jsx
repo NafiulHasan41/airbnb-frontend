@@ -3,13 +3,15 @@ import React from 'react';
 import './book_card.css'
 import Image from 'next/image';
 
-const Book_card = () => {
+const Book_card = ( { host}) => {
+    const img = host?.avatarUrl ? host.avatarUrl : 'https://png.pngtree.com/png-vector/20240611/ourmid/pngtree-flat-people-icon-illustration-vector-png-image_12650659.png';
+    // console.log(img);
     return (
         <div className="book-container group">
         <div className="book  ">
            <div className="flex items-center justify-center  ">
            <Image
-            src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" 
+            src={img}
             width={45}
             height={45}
             alt="book"
