@@ -8,7 +8,9 @@ import useAxiosPublic from "@/lib/useAxiosPublic";
 
 const PriceRange = ({ values, setValues, handleInputChange }) => {
   const [productData, setProductData] = useState([]);
-
+   
+  // if the values take time to come then I will transfer to the root file and pass it as props
+  //like pass the props value to the root file and then pass it to the child component
   const axiosPublic = useAxiosPublic();
   const fetchPriceRangeCounts = async () => {
     try {
